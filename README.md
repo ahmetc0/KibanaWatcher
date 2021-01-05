@@ -1,5 +1,14 @@
 # KibanaWatcher
 
+Tek yapmanız gereken sıkıştırılmış dosyayı klasöre çıkartmak ve KibanaWatcher_v2.2.jar ı çalıştırmak(vpn ve putty port yönlendirme açık iken).
+
+Windows taskbar üzerinde kibanadaki hata sayısını gösteriyor.(gizlenen kısma eklenirse sürükle bırak ile saatin yanına taşınabilir)
+100 den fazla hata olduğunda uyarı veriyor(isteğe göre kapatılabiliyor). 
+Hata sayısı üzerine çift tıklandığı zaman kibanaya yönlendiriyor.
+Malesef vpn koparsa yada putty port yönlendirmesi koparsa yeniden başlatmak gerekebiliyor.
+Url leri kendi port yönlendirmelerinize göre düzenleyebilirsiniz. 
+Json file da değişiklik yapmak yerine arayüzden değişiklik yapmanızı tavsiye ederim.
+
 Uygulama mikroservis verilerini microservices.json içerisinde saklıyor.
 
 Hata sayısı üzerine çift tıklayınca kibana linki açılır. isteğe göre bu link değiştirilebilir.
