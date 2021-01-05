@@ -40,15 +40,4 @@ public class KibanaWatcher {
         }
         return null;
     }
-
-    public void clear(){
-//        kibanaDTO.;
-//        tabbedMain;
-//        trayHolder;
-//        tabbedPane;
-
-
-    }
-
-
 }

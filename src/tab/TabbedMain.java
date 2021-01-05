@@ -9,7 +9,6 @@ public class TabbedMain {
         tb.setSize(tb.getSize());
         tb.setVisible(false);
         tb.setLocationRelativeTo(null);
-        //tb.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         return tb;
     }
 }

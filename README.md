@@ -1,6 +1,6 @@
 # KibanaWatcher
 
-Tek yapmanız gereken sıkıştırılmış dosyayı klasöre çıkartmak ve KibanaWatcher_v2.2.jar ı çalıştırmak(vpn ve putty port yönlendirme açık iken).
+Tek yapmanız gereken sıkıştırılmış dosyayı klasöre çıkartmak ve KibanaWatcher.jar ı çalıştırmak(vpn ve putty port yönlendirme açık iken).
 
 Windows taskbar üzerinde kibanadaki hata sayısını gösteriyor.(gizlenen kısma eklenirse sürükle bırak ile saatin yanına taşınabilir)
 100 den fazla hata olduğunda uyarı veriyor(isteğe göre kapatılabiliyor). 

@@ -122,7 +122,6 @@ public class Tray {
             countErrorBefore = 0;
         }
         System.out.println(date);
-        //System.out.println(elasticsearch.getErrorMessage(elasticsearchUrlIp + elasticSearchLogstash + date + elasticsearchUrlMiddleSearch + elasticsearchUrlMiddle2 + elasticsearchAppname + elasticsearchQueryAnd + elasticsearchQuery));
         return elasticsearch.getErrorNumner(elasticsearchUrlIp + elasticSearchLogstash + date + elasticsearchUrlMiddle + elasticsearchUrlMiddle2 + elasticsearchAppname + elasticsearchQueryAnd + elasticsearchQuery);
     }
 

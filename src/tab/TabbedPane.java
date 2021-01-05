@@ -40,7 +40,6 @@ public class TabbedPane extends JFrame {
                 "tools.Elasticsearch Query"};
         int numPairs = labels.length;
 
-        //Create and populate the panel.
         JPanel panel1 = new JPanel(new SpringLayout());
         for (int i = 0; i < numPairs; i++) {
             JLabel l = new JLabel(labels[i], JLabel.TRAILING);
@@ -56,9 +55,9 @@ public class TabbedPane extends JFrame {
         JCheckBox checkbox1 = new JCheckBox("");
         checkbox1.setBounds(150, 100, 60, 60);
         checkbox1.setSelected(microserviceDTO.isErrorKey());
-        checkbox1.setToolTipText("The system will give warning when the error increase is too fast");
+        checkbox1.setToolTipText("System will give warning when error increase is too fast");
         panel1.add(checkbox1);
-        //JPanel j = new JPanel();
+
         JButton button = new JButton("Save");
         button.addActionListener(
                 new ActionListener() {
@@ -69,7 +68,6 @@ public class TabbedPane extends JFrame {
                         KibanaDTO kibanaDTO = new KibanaDTO(microserviceDTOArrayList);
                         SaveToJson saveToJson = new SaveToJson();
                         saveToJson.save(kibanaDTO);
-                        //trayHolder.refresh(microserviceDTOArrayList);
                         reset();
                     }
                 }
@@ -83,8 +81,6 @@ public class TabbedPane extends JFrame {
         refreshCloseTabs(pop_up);
         JMenuItem closetab = getCloseTab(panel1,pop_up);
         pop_up.add(closetab);
-        //savefile.setAccelerator(KeyStroke.getKeyStroke("control S")); //Key stroke
-        //savefile.addActionListener(new savefile()); //new savefile() is class the implements actionlistner
 
         pane.setComponentPopupMenu(pop_up);
 
@@ -96,17 +92,6 @@ public class TabbedPane extends JFrame {
 
         panelList.add(panel1);
 
-//        jbCloseButton.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                int index = jtbMainTabbedPane.indexOfTabComponent(jbCloseButton);
-//                jtbMainTabbedPane.remove(index);
-//            }
-//        });
-
-
-//        JLabel l22 = new JLabel(microserviceDTO.getName(), JLabel.TRAILING);
-//        pane.addTab(l22, panel1);
         pane.addTab(microserviceDTO.getName(), panel1);
         tabWidth = tabWidth + microserviceDTO.getElasticsearchAppname().length();
     }
@@ -122,7 +107,7 @@ public class TabbedPane extends JFrame {
     }
 
     private void refreshCloseTabs(JPopupMenu pop_up) {
-        pop_up.removeAll(); //= new JPopupMenu();
+        pop_up.removeAll();
         JMenuItem newtab = new JMenuItem("Add Microservice");
         newtab.addActionListener(
                 new ActionListener() {
@@ -181,7 +166,7 @@ public class TabbedPane extends JFrame {
                 case 5:
                     return microserviceDTO.getElasticsearchQuery();
                 default:
-                    System.out.println("Hata: Dosyadan okuma yapılamadı");
+                    System.out.println("Error: the file cannot be read!");
                     break;
             }
         } catch (Exception E) {
@@ -202,45 +187,4 @@ public class TabbedPane extends JFrame {
                 ((JTextField) panel1.getComponent(11)).getText(),
                 ((JCheckBox) panel1.getComponent(13)).isSelected());
     }
-
- /*   public class MyAction implements ActionListener {
-        JPanel panel;
-
-        public MyAction(JPanel panel){
-            this.panel=panel;
-        }
-
-        public void actionPerformed(ActionEvent event) {
-            String str = event.getActionCommand();
-            if (str.equals("Save")) {
-                ArrayList<dto.MicroserviceDTO> microserviceDTOArrayList = new ArrayList<>();
-                JOptionPane.showMessageDialog(null, "Saved");
-                panelList.forEach(panel -> microserviceDTOArrayList.add(getMicroserviceFromPanel(panel)));
-                dto.KibanaDTO kibanaDTO = new dto.KibanaDTO(microserviceDTOArrayList);
-                tools.SaveToJson saveToJson = new tools.SaveToJson();
-                saveToJson.save(kibanaDTO);
-                trayHolder.refresh(microserviceDTOArrayList);
-            }
-            if (str.equals("Add Tab")) {
-                String st = JOptionPane.showInputDialog(null, "Enter Microservice Name.");
-                if (!st.equals("")) {
-                    JPanel panel2 = new JPanel();
-                    JLabel label = new JLabel("Your program is working successfully.");
-                    panel2.add(label);
-                    initializeTab(new dto.MicroserviceDTO(st, "", "", "", "", "", false));
-                }
-            } else if (str.equals("Remove Tab")) {
-                if(panelList.size() > 1) {
-                    int st = JOptionPane.showConfirmDialog(null,"Microservice ");
-                    if (st == 0) {
-                        pane.remove(panel);
-                        panelList.remove(panel);
-                    }
-                }
-                else
-                    JOptionPane.showMessageDialog(null,"The last window cannot be removed.");
-
-            }
-        }
-    }*/
 }
