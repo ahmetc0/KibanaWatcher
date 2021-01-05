@@ -29,4 +29,5 @@ Windows açılırken otomatik başlaması için .bat file hazırladım, eğer o 
 
 
 Görüş ve önerilere açığım :)
+
 Ahmet Ceyhan
