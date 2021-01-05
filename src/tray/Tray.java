@@ -1,6 +1,7 @@
 package tray;
 
 import dto.MicroserviceDTO;
+import tab.TabbedPane;
 import tools.Elasticsearch;
 import tray.TrayHolder;
 import tray.TrayIconMenuItem;
@@ -156,58 +157,33 @@ public class Tray {
             SystemTray tray = SystemTray.getSystemTray();
             Image image = getBufferedImage("88");//default icon
 
-            ActionListener exitListener = new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    System.out.println("Exiting...");
-                    System.exit(0);
-                }
+            ActionListener exitListener = e -> {
+                System.out.println("Exiting...");
+                System.exit(0);
             };
-
-            ActionListener kibanaTodayListener = new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    getTodayEvent();
-                }
-            };
-
-            ActionListener resetListener = new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    trayHolder.counterReset();
-                }
-            };
-
-            ActionListener settingsItemListener = new ActionListener() {
-                public void actionPerformed(ActionEvent e) { trayHolder.menu(); }
-            };
-
-            ActionListener aboutItemListener = new ActionListener() {
-                public void actionPerformed(ActionEvent e) { trayHolder.aboutEvent(); }
-            };
-
-            ActionListener empty = new ActionListener() {
-                public void actionPerformed(ActionEvent e) {}
-            };
+            ActionListener kibanaTodayListener = e -> getTodayEvent();
+            ActionListener resetListener = e -> trayHolder.counterReset();
+            ActionListener settingsItemListener = e -> trayHolder.menu();
+            ActionListener aboutItemListener = e -> trayHolder.aboutEvent();
+            ActionListener empty = e -> {};
+            ActionListener resetWatcherItemListener = e -> TabbedPane.reset();
 
             MouseListener mouseListener = new MouseListener() {
-
                 public void mouseClicked(MouseEvent e) {
                     if (e.getClickCount() == 2) {
                         System.out.println("tray.Tray Icon - Double Mouse clicked!");
                         mouseClickedEvent();
                     }
                 }
-
                 public void mouseEntered(MouseEvent e) {
                     System.out.println("tray.Tray Icon - Mouse entered!");
                 }
-
                 public void mouseExited(MouseEvent e) {
                     System.out.println("tray.Tray Icon - Mouse exited!");
                 }
-
                 public void mousePressed(MouseEvent e) {
                     System.out.println("tray.Tray Icon - Mouse pressed!");
                 }
-
                 public void mouseReleased(MouseEvent e) {
                     System.out.println("tray.Tray Icon - Mouse released!");
                 }
@@ -220,20 +196,11 @@ public class Tray {
             newMenuItem(settingsItemListener, "Settings", false);
             newMenuItem(aboutItemListener, "About", false);
             newMenuItem(exitListener, "Exit", false);
+            newMenuItem(resetWatcherItemListener, "Reset Watcher", false);
             resetMenu();
 
             trayIcon = new TrayIcon(image, name, popup);
-
-//            ActionListener actionListener = new ActionListener() {
-//                public void actionPerformed(ActionEvent e) {
-//                    trayIcon.displayMessage(name,
-//                            "Counter has counterReset! Kibana Opening..",
-//                            TrayIcon.MessageType.INFO);
-//                }
-//            };
-
             trayIcon.setImageAutoSize(true);
-//          trayIcon.addActionListener(actionListener);
             trayIcon.addMouseListener(mouseListener);
 
             try {
@@ -243,7 +210,6 @@ public class Tray {
             }
 
         } else {
-            //  System tray.Tray is not supported
             System.err.println("System tray.Tray is not supported.");
         }
     }

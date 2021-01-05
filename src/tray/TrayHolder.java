@@ -117,7 +117,7 @@ public class TrayHolder {
         panel.add(jTextArea);
         panel.add(label);
         frame.add(panel);
-        frame.setSize(450, 535);
+        frame.setSize(450, 550);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }

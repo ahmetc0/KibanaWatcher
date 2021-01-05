@@ -99,7 +99,7 @@ public class TabbedPane extends JFrame {
 
     public static void reset() {
         try {
-            Runtime.getRuntime().exec("java -jar KibanaWatcher_v2.1.jar");
+            Runtime.getRuntime().exec("java -jar KibanaWatcher.jar");
             System.exit(0);
         } catch (IOException e) {
             e.printStackTrace();
@@ -110,15 +110,13 @@ public class TabbedPane extends JFrame {
         pop_up.removeAll();
         JMenuItem newtab = new JMenuItem("Add Microservice");
         newtab.addActionListener(
-                new ActionListener() {
-                    public void actionPerformed(ActionEvent event) {
-                        String st = JOptionPane.showInputDialog(null, "Enter Microservice Name.");
-                        if (!st.equals("")) {
-                            JPanel panel2 = new JPanel();
-                            JLabel label = new JLabel("Your program is working successfully.");
-                            panel2.add(label);
-                            initializeTab(new MicroserviceDTO(st, "", "", "", "", "", false));
-                        }
+                event -> {
+                    String st = JOptionPane.showInputDialog(null, "Enter Microservice Name.");
+                    if (!st.equals("")) {
+                        JPanel panel2 = new JPanel();
+                        JLabel label = new JLabel("Your program is working successfully.");
+                        panel2.add(label);
+                        initializeTab(new MicroserviceDTO(st, "", "", "", "", "", false));
                     }
                 }
         );
@@ -133,18 +131,16 @@ public class TabbedPane extends JFrame {
     private JMenuItem getCloseTab(JPanel panel1, JPopupMenu pop_up) {
         JMenuItem closetab = new JMenuItem("Remove " + getMicroserviceFromPanel(panel1).getName());
         closetab.addActionListener(
-                new ActionListener() {
-                    public void actionPerformed(ActionEvent event) {
-                        if (panelList.size() > 1) {
-                            int st = JOptionPane.showConfirmDialog(null, "Microservice " + getMicroserviceFromPanel(panel1).getName());
-                            if (st == 0) {
-                                pane.remove(panel1);
-                                panelList.remove(panel1);
-                                refreshCloseTabs(pop_up);
-                            }
-                        } else
-                            JOptionPane.showMessageDialog(null, "The last window cannot be removed.");
-                    }
+                event -> {
+                    if (panelList.size() > 1) {
+                        int st = JOptionPane.showConfirmDialog(null, "Microservice " + getMicroserviceFromPanel(panel1).getName());
+                        if (st == 0) {
+                            pane.remove(panel1);
+                            panelList.remove(panel1);
+                            refreshCloseTabs(pop_up);
+                        }
+                    } else
+                        JOptionPane.showMessageDialog(null, "The last window cannot be removed.");
                 }
         );
         return closetab;
