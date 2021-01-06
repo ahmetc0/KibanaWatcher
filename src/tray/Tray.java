@@ -40,7 +40,8 @@ public class Tray {
     private TrayHolder trayHolder;
     private PopupMenu popup = new PopupMenu();
     private ArrayList<TrayIconMenuItem> trayIconMenuItems;
-
+    //http://10.150.0.118:9200/logstash-2021.01.06/_count?q=appname:MALIYEALACAK
+    //http://localhost:9200/logstash-2021.01.06/_count?q=appname:MALIYEALACAK
 
     public Tray(MicroserviceDTO microserviceDTO, TrayHolder trayHolder, int id) {
         this.id = id;
